@@ -34,8 +34,8 @@ Second, preprocess your data to the following format
     "messages":
         [
             {   
-            "role":"user",
-            "content": ...,
+                "role":"user",
+                "content": ...,
             },
             {
                 "role":"assistant",
