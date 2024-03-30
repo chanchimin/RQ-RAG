@@ -1,0 +1,57 @@
+Your task is to effectively decompose complex, multihop questions into simpler, manageable sub-questions or tasks. This process involves breaking down a question that requires information from multiple sources or steps into smaller, more direct questions that can be answered individually. Here's how you should approach this:
+
+Analyze the Question: Carefully read the multihop question to understand its different components. Identify what specific pieces of information are needed to answer the main question.
+
+Here are an example of how I want you to solve the task:
+
+### Provided Contexts:
+
+Title: Ishqbaaaz
+Text: Ishqbaaaz (English: "Lovers") is an Indian drama television series which is broadcast on Star Plus. It premiered on 27 June 2016 and airs Mon-Fri 10-11pm IST.Nakuul Mehta, Kunal Jaisingh and Leenesh Mattoo respectively portray Shivaay, Omkara and Rudra, the three heirs of the Oberoi family. The show initially focused on the tale of three brothers, later become centered on the love story of Shivaay and Annika (Surbhi Chandna); with the story of Omkara and Rudra being shifted to the spinoff series "Dil Boley Oberoi". In July 2017 "Dil Boley Oberoi" ended and the storylines were merged back into "Ishqbaaaz" which doubled its runtime.
+Title: Hotel Tallcorn
+Text: The Hotel Tallcorn is located in Marshalltown, Iowa. Today it is called the Tallcorn Towers Apartments. Built in 1928 by the Eppley Hotel Company, local citizens contributed $120,000 to ensure the successful completion of this seven-story hotel. It was completed in connection to the seventy-fifth anniversary of Marshalltown. The hotel's sale in 1956 from the Eppley chain to the Sheraton Corporation was part of the second largest hotel sale in United States history. The Tallcorn was listed as a contributing property in the Marshalltown Downtown Historic District on the National Register of Historic Places in 2002.
+Title: The Oberoi Group
+Text: The Oberoi Group is a hotel company with its head office in Delhi. Founded in 1934, the company owns and/or operates 30+ luxury hotels and two river cruise ships in six countries, primarily under its Oberoi Hotels & Resorts and Trident Hotels brands.
+Title: Hotel Bond
+Text: Hotel Bond is a historic hotel, built in two stages in 1913 and 1921, in downtown Hartford, Connecticut by hotelier Harry S. Bond. It is located near Bushnell Park, and was considered the grandest hotel in Hartford during its heyday. The second section is a 12 story building attached to the 6 story first section. A Statler Hotel opened in the area in 1954, creating competition, and the Bond Hotel company declared bankruptcy shortly after that. It was bought by the California-based Masaglia Hotel chain, which began an incremental renovation program. In 1964 it was sold to a Cincinnati, Ohio investment group which announced extensive renovation plans. However, the financing plans fell through and the hotel was again in bankruptcy. The building was sold at auction to the Roman Catholic Archdiocese of Hartford in 1965, and it became the home of the Saint Francis Hospital School of Nursing. The Bond Ballroom reopened in 2001, with the rest of the building becoming a Homewood Suites by Hilton in 2006.
+Title: Future Fibre Technologies
+Text: Future Fibre Technologies (FFT) is a fiber optic sensing technologies company based in Melbourne, Australia, with its US head office in Mountain View, California, Middle East head office in Dubai, Indian head office in New Delhi and European head office in London. Founded in 1994, Future Fibre Technologies product line provides optical fiber intrusion detection systems for perimeters, buried oil and gas pipelines and data communication networks.
+Title: Mohan Singh Oberoi
+Text: Rai Bahadur Mohan Singh Oberoi (15 August 1898 – 3 May 2002) was an Indian hotelier, the founder and chairman of Oberoi Hotels & Resorts, India's second-largest hotel company, with 35 hotels in India, Sri Lanka, Nepal, Egypt, Australia and Hungary.
+Title: Oberoi family
+Text: The Oberoi family is an Indian family that is famous for its involvement in hotels, namely through The Oberoi Group.
+Title: 289th Military Police Company
+Text: The 289th Military Police Company was activated on 1 November 1994 and attached to Hotel Company, 3rd Infantry (The Old Guard), Fort Myer, Virginia. Hotel Company is the regiment's specialty company.
+Title: Ritz-Carlton Jakarta
+Text: The Ritz-Carlton Jakarta is a hotel and skyscraper in Jakarta, Indonesia and 14th Tallest building in Jakarta. It is located in city center of Jakarta, near Mega Kuningan, adjacent to the sister JW Marriott Hotel. It is operated by The Ritz-Carlton Hotel Company. The complex has two towers that comprises a hotel and the Airlangga Apartment respectively. The hotel was opened in 2005.
+Title: Glennwanis Hotel
+Text: The Glennwanis Hotel is a historic hotel in Glennville, Georgia, Tattnall County, Georgia, built on the site of the Hughes Hotel. The hotel is located at 209-215 East Barnard Street. The old Hughes Hotel was built out of Georgia pine circa 1905 and burned in 1920. The Glennwanis was built in brick in 1926. The local Kiwanis club led the effort to get the replacement hotel built, and organized a Glennville Hotel Company with directors being local business leaders. The wife of a local doctor won a naming contest with the name "Glennwanis Hotel", a suggestion combining "Glennville" and "Kiwanis".
+
+### Multihop Question:
+
+The Oberoi family is part of a hotel company that has a head office in what city?
+
+### Decomposed queries:
+
+"Which hotel company is the Oberoi family part of?"
+"Where is the head office of The Oberoi Group located?"
+
+---
+
+As outlined, please format your answer as multiple lines of text. Ensure that each subsequent question follows from the previous one and is self-contained and be capable of being answered on its own.
+Ensure there is exactly one line break between each line.
+
+Now please answer:
+
+### Provided Contexts:
+
+${contexts}
+
+### Multihop Question:
+
+${original_query}
+
+### Decomposed queries:
+
+
+

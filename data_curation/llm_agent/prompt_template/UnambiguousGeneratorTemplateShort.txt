@@ -1,0 +1,55 @@
+You are provided with a specific question, along with several retrieved evidence from internet which might be relevant or not. Your task is to thoroughly analyze both the questions and the evidence. After this analysis, compare your findings with the original answer previously provided from an original dataset. Based on this comparison, determine if it is necessary to provide a new answer.
+
+Consider the following when making your decision:
+
+Consistency with Original Answer: If the original answer from the dataset is still valid and aligns well with the provided evidences, maintain a response that does not deviate significantly from it.
+Updating Information: In cases where the original answer is outdated or evidently incorrect based on the new evidences, construct a new, more accurate and reasonable answer.
+Balance and Judgment: Exercise balanced judgment in situations where partial updating or reorganization of the original answer is required.
+
+Analyze the question, evidences, and the original answer. Then directly provide your reorganized answer if you find the retrieved evidences are useful, otherwise, please output the original answers.
+
+For example:
+
+'When does bunk\'d come out?'
+
+
+
+---
+
+### Question:
+
+When does episode 42 of bunk\'d come out?
+
+### Retrieved Evidence:
+
+[{'title': "List of Bunk'd episodes - Wikipedia", 'text': 'July 31, 2015. ( 2015-07-31) 101. 4.24 [6] Emma, Ravi, and Zuri Ross leave the loud and noisy streets of New York to visit Camp Kikiwaka, which is the same camp where their parents met. While Ravi and Zuri meet Jorge and Tiffany, Emma befriends Lou and develops an interest in Xander while competing against Hazel.'}, {'title': "Bunk'd (TV Series 2015-2024) - IMDb", 'text': "Bunk'd: Created by Pamela Eells. With Miranda May, Mallory James Mahoney, Israel Johnson, Will Buie Jr.. Emma, Ravi, and Zuri Ross head off to the rustic summer camp in Maine where their parents met as teens. With their new friends, a love triangle, and the fears of the camp, they settle into their exciting, challenging new lives."}, {'title': "Bunk'd TV Show Air Dates & Track Episodes - Next Episode", 'text': "The Mandalorian. House of the Dragon. The Boys. The Witcher. The Last of Us. The Lord of the Rings: The Rings of Power. Loki. The Umbrella Academy. The Handmaid's Tale."}, {'title': "Season 5 | Bunk'd Wiki | Fandom", 'text': "Season 5 of Bunk'd was officially announced on February 24, 2020. It represents the first fifth season order for a series in Disney Channel history. Production began on September 30, 2020, (coincidently, on the 9th anniversary of Jessie) and wrapped on April 23, 2021. The season premiered on January 15, 2021, and concluded on August 6, 2021. Back for another exciting summer at the sometimes ..."}, {'title': "Bunk'd (TV Series 2015-2024) - Episode list - IMDb", 'text': "Bunk'd. When Gwen returns for a surprise visit to camp, Noah and Destiny hatch a plan to create dangerous situations for Gwen to fix, hoping it will compel her to stay. Lou wins an award from a magazine, but Bill is suspicious of the reporter's motives. Parker and Jake prepare Noah for a date."}]
+
+### Original Short Answer from Dataset:
+
+May 24, 2017
+
+### Response:
+
+May 24, 2017
+
+---
+
+Now, please answer:
+
+### Question:
+
+${original_query}
+
+### Retrieved Evidence:
+
+${search_results}
+
+### Original Short Answer from Dataset:
+
+${original_answers}
+
+### Response:
+
+
+
+

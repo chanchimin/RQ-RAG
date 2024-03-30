@@ -1,0 +1,57 @@
+You are provided with a conversation history with a user, along with your previous answers, several relevant evidences retrieved from external database, and a recommended answers that might help to resolve the query. Your task is to answer the current query provided by the user.
+
+Consider the following when making your decision:
+
+Consistency with Recommended Answer: If the recommended answer from the dataset is still valid and aligns well with the provided evidences, maintain a response that does not deviate significantly from it. If not, give more priority to your own knowledge and the provided context.
+Updating Information: In cases where the recommended answer is outdated or evidently incorrect based on the new evidences, construct a new, more accurate and reasonable answer.
+Balance and Judgment: Exercise balanced judgment in situations where partial updating or reorganization of the recommended answer is required.
+
+NEVER reply that you can not answer the question.
+
+For example:
+
+---
+
+### Conversation History:
+
+{'role': 'user', 'content': 'Can you explain contrastive learning in machine learning in simple terms for someone new to the field of ML?', 'all_evidences': [[{'title': 'Understanding Contrastive Learning | by Ekin Tiu | Towards Data Science', 'text': "<b>Contrastive</b> <b>learning</b> is a <b>machine</b> <b>learning</b> technique used to learn the general features of a dataset without labels by teaching the model which data points are similar or different. Let's begin with a simplistic example. Imagine that you are a newborn baby that is trying to make sense of the world."}, {'title': 'Advances in Understanding, Improving, and Applying Contrastive Learning ...', 'text': 'Overview Over the past few years, <b>contrastive</b> <b>learning</b> has emerged as a powerful method for training <b>machine</b> <b>learning</b> models. It has driven a revolution in <b>learning</b> visual representations, powering methods like SimCLR, CLIP, and DALL-E 2. The empirical success of these methods has begged the question - what makes <b>contrastive</b> <b>learning</b> so powerful?'}, {'title': 'Contrastive Learning: A Tutorial | Built In', 'text': '<b>Contrastive</b> <b>learning</b> involves training a model to differentiate between similar and dissimilar pairs of data points by maximizing their similarity within the same class and minimizing it between different classes. This technique has a wide range of applications, including computer vision and natural language processing.'}], [{'title': 'The Beginner&#x27;s Guide to Contrastive Learning - v7labs.com', 'text': "V7 Data Annotation V7 Model Training Let's dive <b>in</b>. What is <b>contrastive</b> <b>learning</b>? <b>Contrastive</b> <b>Learning</b> is a Machine <b>Learning</b> paradigm where unlabeled data points are juxtaposed against each other to teach a model which points are similar and which are different."}, {'title': 'Contrastive Representation Learning: A Framework and Review', 'text': '<b>Examples</b> <b>of</b> how <b>contrastive</b> <b>learning</b> has been applied in <b>computer</b> <b>vision</b>, natural language processing, audio processing, and others, as well as in Reinforcement <b>Learning</b> are also presented. Finally, we discuss the challenges and some of the most promising future research directions ahead. Submission history From: Phuc Le Khac [ view email]'}, {'title': 'Contrastive Representation Learning: A Framework and Review - arXiv.org', 'text': '<b>Examples</b> <b>of</b> how <b>contrastive</b> <b>learning</b> has been applied in <b>computer</b> <b>vision</b>, natural language processing, audio processing, and others, as well as in Reinforcement <b>Learning</b> are also presented. Finally, we discuss the challenges and some of the most promising future research directions ahead. INDEX TERMS <b>Contrastive</b> <b>learning</b>, representation ...'}], [{'title': '[2106.05967] Revisiting Contrastive Methods for Unsupervised Learning of Visual Representations', 'text': 'Our results show that current <b>contrastive</b> approaches work surprisingly well across: (i) object- versus scene-centric, (ii) uniform versus long-tailed and (iii) general versus domain-specific datasets. Second, given the generality of the approach, we try to realize further gains with minor modifications.'}, {'title': 'Contrastive Learning: A Tutorial | Built In', 'text': '<b>Contrastive</b> <b>learning</b> is most notably used for self-supervised <b>learning</b>, a <b>type</b> <b>of</b> <b>unsupervised</b> <b>learning</b> where the label, or supervisory signal, comes from the data itself. In the self-supervised setting, <b>contrastive</b> <b>learning</b> allows us to train encoders to learn from massive amounts of unlabeled data. Specifically, in self-supervised <b>contrastive</b> ...'}, {'title': 'Supervised vs. Unsupervised Learning: Key Differences - Scribbr', 'text': 'There are two main approaches to machine <b>learning</b>: supervised and <b>unsupervised</b> <b>learning</b>. The main difference between the two is the <b>type</b> <b>of</b> data used to train the computer. However, there are also more subtle differences.'}]], 'all_queries': ["'Explanation of contrastive learning in machine learning.'", "'Examples of contrastive learning in computer vision.'", "'Comparison of contrastive learning with other types of unsupervised learning.'"]}
+{'role': 'assistant', 'content': 'Sure! Let\'s say you want to build a model which can distinguish between images of cats and dogs. You gather your dataset, consisting of many cat and dog pictures. Then you put them through a neural net of your choice, which produces some representation for each image, a sequence of numbers like [0.123, 0.045, 0.334, ...]. The problem is, if your model is unfamiliar with cat and dog images, these representations will be quite random. At one time a cat and a dog picture could have very similar representations (their numbers would be close to each other), while at others two cat images may be represented far apart. In simple terms, the model wouldn\'t be able to tell cats and dogs apart. This is where contrastive learning comes in.\n\nThe point of contrastive learning is to take pairs of samples (in this case images of cats and dogs), then train the model to "pull" representations of similar pairs (cat-cat or dog-dog) closer to each other and "push" representations of different pairs (cat-dog) apart. After doing this for a sufficient number of steps, your model will be able to produce unique, reliable representations for cats and dogs, in essence tell them apart.\n\nThis method is not limited to images, you can typically use it with any dataset that has similar and dissimilar data points.'}
+
+### Current Query:
+
+{'role': 'user', 'content': "I didn't understand how pulling and pushing works. What are we pulling or pushing? And how does it work in terms of code or maths?"}
+
+### Recommended Answer:
+
+{'role': 'assistant', 'content': 'It has to do with a process called differentiation, which means finding a derivative: a function that tells us whether another function is going up or down at a given point. For example, the derivative of `f(x) = x` is `f\'(x) = 1`, because it\'s always going up at a 1:1 ratio. This can be done for a variety of functions; notably, if you know the derivatives of `f(x)` and `g(x)`, you can also get the derivative of `f(g(x))` using a formula called the chain rule. Neural networks happen to be made of differentiable functions, so we can take the derivative of parts or all of it.\n\nTo use this for "pushing" and "pulling", we\'ll put two images through the neural network. Let\'s say the images are of a cat and a dog, so we want to increase the distance between the two. We pick one neuron weight from the network and make it a variable `x`, then construct a function that calculates the output of the network based on it and all the other parameters; let\'s call it `N(x)`. The distance between the cat and dog outputs would be `f(x) = N(cat) - N(dog)`. (Of course, the real output would have more than 1 dimension, but we\'re simplifying.) We now want to nudge the weight such that it moves the two outputs slightly further apart. For that, we can simply take the derivative! If `f\'(x)` is positive, that means that increasing the weight will move them further apart, so we should do that. If it\'s negative, then it\'ll move them closer, so we\'ll want to slightly decrease the weight instead. Apply this to all the neurons enough times and your network will soon converge to a pretty good cat-dog separator!'}
+
+### Your Response:
+
+In contrastive learning, we use a process called differentiation to adjust the weights of the neural network so that it produces the desired representations. We take pairs of samples and train the model to 'pull' representations of similar pairs closer to each other and 'push' representations of different pairs apart. For example, if we have a dataset of cat and dog images, we want to train the model to distinguish between them. We put the images through a neural network, which produces some representation for each image. The representations for cat images should be similar to each other, and the representations for dog images should be similar to each other, but the representations for cat and dog images should be different. We pick one neuron weight from the network and make it a variable `x`, then construct a function that calculates the output of the network based on it and all the other parameters; let's call it `N(x)`. The distance between the cat and dog outputs would be `f(x) = N(cat) - N(dog)`. We now want to nudge the weight such that it moves the two outputs slightly further apart. If `f\'(x)` is positive, that means that increasing the weight will move them further apart, so we should do that. If it's negative, then it'll move them closer, so we'll want to slightly decrease the weight instead. We repeat this process for many pairs of samples until the model produces unique, reliable representations for cats and dogs. This method can be used with any dataset that has similar and dissimilar data points, not just images.
+
+---
+
+Now, please answer:
+
+### Conversation History:
+
+${cur_history_with_context}
+
+### Current Query:
+
+${current_query}
+
+### Recommended Answer:
+
+${recommended_answer}
+
+### Your Response:
+
+
+
+
+
+
+
+
+

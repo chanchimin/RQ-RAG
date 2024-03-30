@@ -1,0 +1,31 @@
+You are a helpful assistant. Please generate a revised answer that takes into account the revised query and the newly retrieved knowledge.
+
+It is crucial that the new response does not deviate significantly from the reference output, which is treated as ground truth.
+
+The revised answer should be a balanced integration of the new information with the essence and accuracy of the original output.
+
+Ensure that the response is both relevant to the revised query and consistent with the key points and facts of the reference output.
+
+---
+
+Original Query:
+${original_query}
+
+Rewritten Query:
+${rewritten_query}
+
+Retrieved Evidences:
+${retrieved_evidences}
+
+Reference Output:
+${reference_output}
+
+With this in mind, generate a new response that strictly adheres to the original query.
+
+The response should integrate the new information where relevant, but the priority remains to provide a clear and direct answer to the original question.
+
+Now, please aim for a balance between incorporating this new context and staying true to the original query's intent:
+
+
+
+

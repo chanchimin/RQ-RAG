@@ -1,0 +1,69 @@
+You are provided with an ambiguous question, along with several more specific questions derived from it and the relevant evidences retrieved from external database. Your task is to answer the Original Question by covering all the aspect of the Unambiguous Questions Derived.
+
+Consider the following when making your decision:
+
+Consistency with Original Answer: If the original answer from the dataset is still valid and aligns well with the provided evidences, maintain a response that does not deviate significantly from it. If not, give more priority to the ***Answer*** from Unambiguous Questions.
+Updating Information: In cases where the original answer is outdated or evidently incorrect based on the new evidences, construct a new, more accurate and reasonable answer.
+Balance and Judgment: Exercise balanced judgment in situations where partial updating or reorganization of the original answer is required.
+
+If the retrieved evidences is not related to the question, please try to get the best information of *** Answer *** from Unambiguous question and incorporate them in your final answer.
+NEVER reply that you can not answer the question.
+
+For example:
+
+---
+
+### Original Question:
+
+'When does bunk\'d come out?'
+
+### Unambiguous Questions Derived and Provided Answers:
+
+Unambiguous Question0: 'When does episode 42 of bunk\'d come out?'
+Evidence0: [omitted ...]
+
+*** Answer0: 'May 24, 2017' ***
+
+Unambiguous Question1: 'When does episode 41 of bunk\'d come out?'
+Evidence1: [omitted ...]
+
+*** Answer1: 'April 28, 2017' ***
+
+Unambiguous Question2: 'When does episode 40 of bunk\'d come out?'
+Evidence2: [omitted ...]
+
+*** Answer2: 'April 21, 2017' ***
+
+### Original Answer:
+
+'The new bunk\'d episode 41 comes out on April 21, 2017, episode 42 comes out on April 28, 2017 and episode 42 is due to come out on May 24, 2017. '
+
+### Your Response:
+
+The original question did not specify a particular episode. Based on the provided unambiguous question and evidence, the following episodes of bunk\'d have the release dates that; Episode 40 on April 21, 2017; Episode 41 on April 28, 2017; and Episode 42 on May 24, 2017.
+
+---
+
+As shown above, please do not add any superfluous words; only the specific answer is needed.
+Now, please answer:
+
+### Original Question:
+
+${ambiguous_question}
+
+### Unambiguous Questions Derived and Provided Answers:
+
+${unambiguous_questions_with_answers}
+
+### Original Answer:
+
+${original_answer}
+
+### Your Response:
+
+
+
+
+
+
+

@@ -1,0 +1,19 @@
+You are a helpful assistant. Your success hinges on formulating precise and relevant search queries. In this task, you will transform given queries into more effective ones, optimizing them for search engine use. This process, known as query rewriting, involves refining, expanding, or rephrasing the original queries to enhance clarity, specificity, and relevance.
+
+Consider the following aspects while rewriting queries:
+
+Clarity: Ensure that the query is clear and unambiguous. Avoid vague terms and strive for specificity.
+
+Conciseness: While detail is important, unnecessary verbosity can dilute the query's effectiveness. Aim for a balance between brevity and descriptiveness.
+
+Relevance: Focus on including keywords and phrases that are directly related to the information needed. Exclude irrelevant or tangential terms.
+
+Intent: Pay attention to the underlying intent of the query. Whether it's informational, navigational, or transactional, align your rewritten query with this intent.
+
+Contextual Keywords: If the query is related to a specific field or subject area, incorporate relevant jargon or technical terms.
+
+Here is the original query that I would like you to help me rewrite:
+
+${original_query}
+
+Now, please help me rewrite a new query different from ${rewritten_queries}:

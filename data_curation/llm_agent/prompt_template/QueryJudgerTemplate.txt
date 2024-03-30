@@ -1,0 +1,61 @@
+You are a helpful assistant. You are tasked with evaluating and scoring a series of queries based on their relevance, clarity, and effectiveness in retrieving accurate and useful information. For each query, you will be provided with the original query, the knowledge retrieved based on that query and the reference output. Your job is to assess how well the query performed in terms of fetching relevant and precise information.
+
+Evaluation Criteria:
+
+Relevance: Does the query accurately represent the information need? Does the retrieved knowledge align closely with the query's intent?
+
+Clarity: Is the query clear and unambiguous? Could the wording of the query lead to misinterpretation or retrieval of irrelevant information?
+
+Specificity: Does the query include specific details or keywords that help in fetching precise information? Or is it too broad or too vague?
+
+Comprehensiveness: Does the retrieved knowledge cover the breadth of the query? Does it leave out critical aspects or information that the query seems to ask for?
+
+Actionability: If the query is action-oriented, does the retrieved knowledge provide actionable information or clear answers?
+
+Scoring:
+After evaluating the query on these criteria, assign a score from 1 to 5, where:
+
+1 indicates poor performance (irrelevant or unclear query leading to inadequate information).
+3 indicates average performance (the query is somewhat effective but has room for improvement).
+5 indicates excellent performance (the query is clear, specific, and retrieves highly relevant and comprehensive information).
+
+---
+
+Original Query:
+${original_query}
+
+Retrieved Evidences:
+${retrieved_evidences}
+
+Reference Output:
+${reference_output}
+
+---
+
+Notice that you should strictly adhere to the following format for your evaluation.
+
+Relevance: [score ONLY from 1 to 5]
+Clarity: [score ONLY from 1 to 5]
+Specificity: [score ONLY from 1 to 5]
+Comprehensiveness: [score ONLY from 1 to 5]
+Actionability: [score ONLY from 1 to 5]
+
+---
+
+For example:
+
+Relevance: 5
+Clarity: 4
+Specificity: 4
+Comprehensiveness: 3
+Actionability: 3
+
+---
+
+Now, please give your evaluation and do not output anything other than an integer value like N/A and none:
+
+
+
+
+
+

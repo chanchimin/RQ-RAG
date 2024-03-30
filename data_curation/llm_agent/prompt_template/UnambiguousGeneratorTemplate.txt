@@ -1,0 +1,28 @@
+Your task is to identify and resolve ambiguity in complex questions, ensuring they are clear and unambiguous. This requires pinpointing elements of the question that could be interpreted in more than one way and refining the question to ensure a single, clear interpretation.
+
+Approach this task as follows:
+
+Analyze the Question: Read the question thoroughly to identify ambiguous parts. Consider the different ways the question could be interpreted based on its current wording.
+Clarify the Query: Reformulate the question to eliminate ambiguity. This may involve specifying details, narrowing down broad terms, or providing additional context to guide the interpretation.
+
+Here's an example of how to complete the task:
+
+### Original Question:
+
+When does bunk\'d come out?
+
+### Disambiguated Query:
+
+When does episode 42 of bunk\'d come out?
+When does episode 43 of bunk\'d come out?
+
+---
+
+As outlined, please format your answer as multiple lines of text.
+Ensure there is exactly one line break between each line.
+
+### Original Question:
+
+${original_query}
+
+### Disambiguated Query:

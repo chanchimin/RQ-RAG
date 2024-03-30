@@ -1,0 +1,57 @@
+Your task is to effectively decompose complex, multihop questions into simpler, manageable sub-questions or tasks. This process involves breaking down a question that requires information from multiple sources or steps into smaller, more direct questions that can be answered individually. Here's how you should approach this:
+
+Analyze the Question: Carefully read the multihop question to understand its different components. Identify what specific pieces of information are needed to answer the main question.
+
+Specifically, we will provide the different type of the complex query which might help you to decompose the question;
+
+1. Comparison question; is a type of question that compares two or more entities from the same group in some aspects of the entity. For instance, a comparison question compares two or more people with the date of birth or date of death (e.g., Who was born first, Albert Einstein or Abraham Lincoln?).
+2. Inference question; is created from the two triples (e, r1, e1) and (e1, r2, e2) in the KB. We utilized the logical rule to acquire the new triple (e, r, e2), where r is the inference relation obtained from the two relations r1 and r2. A question–answer pair is created by using the new triple (e, r, e2), its question is created from (e, r) and its answer is e2. For instance, using two triples (Abraham Lincoln, mother, Nancy Hanks Lincoln) and (Nancy Hanks Lincoln, father, James Hanks), we obtain a new triple (Abraham Lincoln, maternal grandfather, James Hanks). A question is: Who is the maternal grandfather of Abraham Lincoln? An answer is James Hanks.
+3. Compositional question; is created from the two triples (e, r1, e1) and (e1, r2, e2) in the KB. Compared with inference question, the difference is that no inference relation r exists from the two relations r1 and r2. For instance, there are two triples (La La Land, distributor, Summit Entertainment) and (Summit Entertainment, founded by, Bernd Eichinger). There is no inference relation r from the two relations distributor and founded-by. In this case, a question is created from the entity e and the two relations r1 and r2: Who is the founder of the company that distributed La La Land film? An answer is the entity e2 of the second triple: Bernd Eichinger.
+4. Bridge-comparison question; is a type of question that combines the bridge question with the comparison question. It requires both finding the bridge entities and doing comparisons to obtain the answer. For instance, instead of directly compare two films, we compare the information of the directors of the two films, e.g., Which movie has the director born first, La La Land or Tenet? To answer this type of question, the model needs to find the bridge entity that connects the two paragraphs, one about the film and one about the director, to get the date of birth information. Then, making a comparison to obtain the final answer.
+
+Here are an example of how I want you to solve the task:
+
+### Multihop Question:
+
+Are the directors of the films 'Finding Your Feet' and 'The Notorious Miss Lisle' from the same country?
+
+### Question Type:
+
+Bridge-comparison
+
+### Evidences Triplets or Supporting Facts that Might Help:
+
+['Finding Your Feet', 'director', 'Richard Loncraine']
+['The Notorious Miss Lisle', 'director', 'James Young']
+['James Young (director)', 'country of citizenship', 'American']
+['Richard Loncraine', 'country of citizenship', 'British']
+
+### Decomposed queries:
+
+"Who is the director of the film 'Finding Your Feet'?"
+"Who is the director of the film 'The Notorious Miss Lisle'?"
+"What is the nationality of James Young (director)?"
+"What is the nationality of Richard Loncraine?"
+
+---
+
+As outlined, please format your answer as multiple lines of text. And make sure every query is a singlehop question.
+Ensure there is exactly one line break between each line.
+
+Now please answer:
+
+### Multihop Question:
+
+${original_query}
+
+### Question Type:
+
+${type}
+
+### Evidences Triplets or Supporting Facts that Might Help:
+
+${evidences}
+
+### Decomposed queries:
+
+

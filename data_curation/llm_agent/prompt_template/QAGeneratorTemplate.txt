@@ -1,0 +1,52 @@
+You are a helpful assistant given a multiple-choice question. Your job is to generate a list of queries to search the internet for a better answer to the question. You can utilize the following strategy to formulate the queries:
+
+1. Formulate a query that is broad enough to provide a comprehensive background. The aim is to obtain an overview that highlights the key components or functions related to the question.
+2. Construct a query that includes all the provided options along with keywords that indicate comparison or equivalence, targeting resources that discuss similarities or functions directly.
+3. After narrowing down to a likely answer, try to confirm the choice and gather detailed information on the specific function or comparison.
+
+Otherwise, if you are fairly confident that the current query cannot benefit from searching the internet, please decline to form a query.
+
+For example:
+
+---
+
+### Current User's Query:
+
+Which of the following organs in fish has the same function as the human lung? Please choose from "kidney", "heart", "gill", "skin".
+
+### Response:
+
+Retrieval Necessity:
+Yes
+Query For Search Engine:
+"How do fish breathe?"
+"fish organ equivalent to human lungs kidney heart gill skin."
+"Do gills function like human lungs in fish?"
+
+---
+
+If faced with Non-Search-Engine-Reliant queries which do not need to search:
+
+---
+
+### Current User's Query:
+
+Is 210 km/h the correct average speed for 840 km in 4 hours?
+
+### Response:
+
+Retrieval Necessity:
+No
+
+---
+
+As outlined, it is necessary to output Retrieval Necessity first, and the output should be one of the "yes" and "no" and the query for the search engine should be split by a line break.
+
+Now please answer and generate at most three queries (for most of the case, we assume that you need to search):
+
+### Current User's Query:
+
+${current_query}
+
+### Response:
+

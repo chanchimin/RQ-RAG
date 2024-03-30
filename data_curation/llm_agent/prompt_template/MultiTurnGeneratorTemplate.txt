@@ -1,0 +1,111 @@
+In a multi-turn dialogue scenario, your task is to determine whether it is necessary to use a search engine to answer a user's query. Consider the following two scenarios:
+
+Non-Informational Replies: Sometimes, users may respond with statements or expressions that do not require information retrieval, such as "thank you" or "okay." In these cases, assess whether a search engine query is necessary.
+
+Ambiguous or Unclear Queries: At times, a user's query might be unclear or lack specific details. Your role is to recognize the user's intent and rewrite the query to make it clearer and more precise, facilitating an effective search engine query.
+
+Previously Answered Queries: Check if the current query or a similar one has been previously asked and answered in the conversation history. If relevant information or evidences have already been provided, acknowledge this and avoid repeating the search.
+
+Based on the above 3 scenarios, please reply with the following format strictly:
+
+For the case that do not need to query the search engine, output as follows:
+
+### Response:
+
+Retrieval Necessity:
+No
+
+For the case that the retrieval is necessary, output as follows:
+
+### Response For Retrieval Necessity:
+
+Retrieval Necessity:
+Yes
+Query For Search Engine:
+[...]
+
+For examples:
+
+---
+
+In the case that do not need to retrieve;
+
+### Conversation History:
+
+
+{'role': 'user', 'content': 'Explain the significance of the American Revolution, including the events that led up to it, the impact it had on the world, and its ongoing relevance today.'}
+{'role': 'assistant', 'content': "The American Revolution was a significant event in world history as it marked the first successful colonial war of independence against a European power. The events leading up to the revolution were a combination of political, economic, and philosophical factors. The British government's attempts to exert greater control over the colonies and the imposition of taxes without representation in the colonial legislatures were among the key factors that led to the revolution.\n\nThe American Revolution had a profound impact on the world and changed the course of history. It led to the creation of the United States of America and established the principle that governments derive their power from the consent of the governed. This concept was a cornerstone of modern democracy and has been influential in shaping political systems around the world.\n\nThe American Revolution also had a profound impact on the ideas of liberty and freedom, inspiring other revolutionary movements and helping to spread the ideals of democracy and human rights. The American Revolution is still relevant today as its principles continue to inspire people around the world who are fighting for their own freedom and democracy. Additionally, the ideas and political institutions established during the American Revolution continue to shape American society and the broader world today."}
+
+
+### Current User's Query:
+
+{'role': 'user', 'content': 'This is pretty much I would like to know, thank you!'}
+
+### Response For Retrieval Necessity:
+
+Retrieval Necessity:
+No
+
+---
+
+In the case that retrieval is necessary, and the original query from user is fine;
+
+### Conversation History:
+
+{'role': 'user', 'content': 'Explain the significance of the American Revolution, including the events that led up to it, the impact it had on the world, and its ongoing relevance today.'}
+{'role': 'assistant', 'content': "The American Revolution was a significant event in world history as it marked the first successful colonial war of independence against a European power. The events leading up to the revolution were a combination of political, economic, and philosophical factors. The British government's attempts to exert greater control over the colonies and the imposition of taxes without representation in the colonial legislatures were among the key factors that led to the revolution.\n\nThe American Revolution had a profound impact on the world and changed the course of history. It led to the creation of the United States of America and established the principle that governments derive their power from the consent of the governed. This concept was a cornerstone of modern democracy and has been influential in shaping political systems around the world.\n\nThe American Revolution also had a profound impact on the ideas of liberty and freedom, inspiring other revolutionary movements and helping to spread the ideals of democracy and human rights. The American Revolution is still relevant today as its principles continue to inspire people around the world who are fighting for their own freedom and democracy. Additionally, the ideas and political institutions established during the American Revolution continue to shape American society and the broader world today."}
+{'role': 'user', 'content': 'Which had the most impact between American and French Revolution?'}
+{'role': 'assistant', 'content': 'It is difficult to determine which revolution had the most impact as both the American Revolution and the French Revolution had far-reaching effects on world history. The American Revolution was the first successful colonial revolt against a European power and resulted in the formation of the United States of America as an independent nation. This revolution inspired other colonial movements and helped spread the idea of democracy and liberty around the world.\n\nOn the other hand, the French Revolution was a major turning point in European history and had a profound impact on the political and social structures of France and Europe as a whole. It marked the end of the monarchy and the rise of the modern nation-state, leading to the establishment of a democratic republic in France and inspiring similar movements in other parts of Europe. The French Revolution also contributed to the spread of nationalism, challenged the power of the Catholic Church, and laid the foundation for the concept of human rights.\n\nIn conclusion, both the American and French Revolutions had significant impacts on world history and it is difficult to say which one had the most impact. Each revolution played a key role in shaping the modern world in its own unique way.'}
+
+### Current User's Query:
+
+{'role': 'user', 'content': 'In how many possible states can a Rubik\'s Cube be?'}
+
+### Response For Retrieval Necessity:
+
+Retrieval Necessity:
+Yes
+Query For Search Engine:
+"In how many possible states can a Rubik\'s Cube be?"
+
+---
+
+In the case that retrieval is necessary, and the user's query is not clear, thus help it rewritten;
+
+### Conversation History:
+
+{'role': 'user', 'content': 'Explain the significance of the American Revolution, including the events that led up to it, the impact it had on the world, and its ongoing relevance today.'}
+{'role': 'assistant', 'content': "The American Revolution was a significant event in world history as it marked the first successful colonial war of independence against a European power. The events leading up to the revolution were a combination of political, economic, and philosophical factors. The British government's attempts to exert greater control over the colonies and the imposition of taxes without representation in the colonial legislatures were among the key factors that led to the revolution.\n\nThe American Revolution had a profound impact on the world and changed the course of history. It led to the creation of the United States of America and established the principle that governments derive their power from the consent of the governed. This concept was a cornerstone of modern democracy and has been influential in shaping political systems around the world.\n\nThe American Revolution also had a profound impact on the ideas of liberty and freedom, inspiring other revolutionary movements and helping to spread the ideals of democracy and human rights. The American Revolution is still relevant today as its principles continue to inspire people around the world who are fighting for their own freedom and democracy. Additionally, the ideas and political institutions established during the American Revolution continue to shape American society and the broader world today."}
+{'role': 'user', 'content': 'Which had the most impact between American and French Revolution?'}
+{'role': 'assistant', 'content': 'It is difficult to determine which revolution had the most impact as both the American Revolution and the French Revolution had far-reaching effects on world history. The American Revolution was the first successful colonial revolt against a European power and resulted in the formation of the United States of America as an independent nation. This revolution inspired other colonial movements and helped spread the idea of democracy and liberty around the world.\n\nOn the other hand, the French Revolution was a major turning point in European history and had a profound impact on the political and social structures of France and Europe as a whole. It marked the end of the monarchy and the rise of the modern nation-state, leading to the establishment of a democratic republic in France and inspiring similar movements in other parts of Europe. The French Revolution also contributed to the spread of nationalism, challenged the power of the Catholic Church, and laid the foundation for the concept of human rights.\n\nIn conclusion, both the American and French Revolutions had significant impacts on world history and it is difficult to say which one had the most impact. Each revolution played a key role in shaping the modern world in its own unique way.'}
+
+### Current User's Query:
+
+{'role': 'user', 'content': 'Tell me something about that famous space thing.'}
+
+### Response For Retrieval Necessity:
+
+Retrieval Necessity:
+Yes
+Query For Search Engine:
+"Provide details about the Apollo 11 moon landing mission."
+"Biography and achievements of astronaut Neil Armstrong."
+"Summary and reviews of the movie 'Interstellar'."
+
+---
+
+As outlined, it is necessary to output Retrieval Necessity first, and the output should be one of the "yes" and "no" and the query for the search engine should be split by a line break.
+For most of the case, retrieval process might help you better answer the question, only skip the retrival process when you are fairly confident about not doing so.
+Now, please answer:
+
+### Conversation History:
+
+${conversation_history}
+
+### Current User's Query:
+
+${current_query}
+
+### Response For Retrieval Necessity:
+
+
