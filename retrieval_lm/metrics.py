@@ -4,9 +4,9 @@ import re
 from collections import Counter
 import re
 
-
 def exact_match_score(prediction, ground_truth):
     return (normalize_answer(prediction) == normalize_answer(ground_truth))
+
 
 def metric_max_over_ground_truths(metric_fn, prediction, ground_truths):
     scores_for_ground_truths = []
@@ -15,6 +15,7 @@ def metric_max_over_ground_truths(metric_fn, prediction, ground_truths):
         scores_for_ground_truths.append(score)
     return max(scores_for_ground_truths)
 
+
 def accuracy(preds, labels):
     match_count = 0
     for pred, label in zip(preds, labels):
@@ -22,6 +23,7 @@ def accuracy(preds, labels):
             match_count += 1
 
     return match_count / len(preds)
+
 
 def f1(decoded_preds, decoded_labels):
     f1_all = []
@@ -35,6 +37,7 @@ def f1(decoded_preds, decoded_labels):
             f1_all.append(qa_f1_score(prediction, answers))
     return 100 * np.mean(f1_all)
 
+
 def qa_f1_score(prediction, ground_truth):
     prediction_tokens = normalize_answer(prediction).split()
     ground_truth_tokens = normalize_answer(ground_truth).split()
@@ -46,6 +49,7 @@ def qa_f1_score(prediction, ground_truth):
     recall = 1.0 * num_same / len(ground_truth_tokens)
     f1 = (2 * precision * recall) / (precision + recall)
     return f1
+
 
 def normalize_answer(s):
     def remove_articles(text):
@@ -62,6 +66,7 @@ def normalize_answer(s):
         return text.lower()
     return white_space_fix(remove_articles(remove_punc(lower(s))))
 
+
 def find_entity_tags(sentence):
     entity_regex = r'(.+?)(?=\s<|$)'
     tag_regex = r'<(.+?)>'
@@ -76,11 +81,13 @@ def find_entity_tags(sentence):
             results[entity] = tag
     return results
 
+
 def match(prediction, ground_truth):
     for gt in ground_truth:
         if gt in prediction:
             return 1
     return 0
+
 
 def match_batch(predictions, ground_truths):
 
@@ -91,6 +98,7 @@ def match_batch(predictions, ground_truths):
         else:
             tmp.append(0)
     return tmp
+
 
 def calculate_retrieval_em_f1(predicted_support_idxs, gold_support_idxs):
     # Taken from hotpot_eval

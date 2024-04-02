@@ -143,7 +143,13 @@ def generate_tree_of_thoughts(model, tokenizer, initial_prompts, raw_datas, spec
             input_text = current_path['prompt'] + special_token
 
             inputs = tokenizer(input_text, return_tensors="pt", add_special_tokens=False, padding=True).to(model.device)
-            outputs = model.generate(**inputs, output_scores=True, output_hidden_states=True, return_dict_in_generate=True, do_sample=False)
+
+            if special_token != "[A_Response]":
+                # when not generating the final answer, we adjust the temp to increase diversity
+                outputs = model.generate(**inputs, return_dict_in_generate=True, temperature=1.0)
+            else:
+                outputs = model.generate(**inputs, return_dict_in_generate=True, do_sample=False)
+
             decoded_output = tokenizer.batch_decode(outputs.sequences, skip_special_tokens=False)[0].replace("<s> ", "<s>")
 
             if special_token == "[A_Response]":

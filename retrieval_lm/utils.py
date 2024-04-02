@@ -20,6 +20,7 @@ def preprocess_single_data(user_query, tokenizer, previous_history=""):
 
     return [user_query]
 
+
 def preprocess_multi_turn_inference_data(user_query, previous_history, tokenizer, task, turn, retrieve_type):
 
     # apparently multi_turn inference is hard to support batch decoding.
@@ -44,8 +45,6 @@ def preprocess_multi_turn_inference_data(user_query, previous_history, tokenizer
         raise ValueError(f"task {task} do not in the lists")
 
     return [eval_example]
-
-
 
 
 def preprocess_eval_data(row, tokenizer, task):
