@@ -12,7 +12,7 @@ This is the repo of our paper "RQ-RAG: Learning to Refine Queries for Retrieval 
 Clone this repository first, and install the dependencies.
 
 ```
-git clone git clone git@github.com:chanchimin/RQ-RAG.git
+git clone git@github.com:chanchimin/RQ-RAG.git
 cd RQ-RAG
 pip install -r requirements.txt
 ```
