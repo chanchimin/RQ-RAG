@@ -48,7 +48,7 @@ Second, preprocess your data to the following format
 Afterward, execute the following lines, make sure to substitute your data path.
 
 ```shell
-cd ./data_creation_sag
+cd ./data_curation
 
 python main_multiturn_answer_generate.py \
 --raw_data_path_multiturn  \
