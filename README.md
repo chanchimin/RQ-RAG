@@ -2,6 +2,10 @@
 
 This is the repo of our paper "RQ-RAG: Learning to Refine Queries for Retrieval Augmented Generation"
 
+**Code Refactoring in Progress**
+
+
+Please note that the code in this repository is currently undergoing refactoring as part of preparations for submission to a conference and is not fully tested yet.
 
 ## Getting Start
 
@@ -12,7 +16,7 @@ This is the repo of our paper "RQ-RAG: Learning to Refine Queries for Retrieval 
 Clone this repository first, and install the dependencies.
 
 ```
-git clone git clone git@github.com:chanchimin/RQ-RAG.git
+git clone git@github.com:chanchimin/RQ-RAG.git
 cd RQ-RAG
 pip install -r requirements.txt
 ```
@@ -48,7 +52,7 @@ Second, preprocess your data to the following format
 Afterward, execute the following lines, make sure to substitute your data path.
 
 ```shell
-cd ./data_creation_sag
+cd ./data_curation
 
 python main_multiturn_answer_generate.py \
 --raw_data_path_multiturn  \

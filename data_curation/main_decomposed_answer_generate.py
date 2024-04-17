@@ -173,8 +173,8 @@ def main():
     openai_config = {
         "api_key": args.openai_api_key,
         "base_url": args.openai_api_base,
-        "model_version": args.model_version
     }
+
 
     if args.search_engine_type == "duckduckgo":
         search_engine_api = DDGSQueryRun(max_results=args.ndocs)
@@ -214,6 +214,11 @@ def main():
             original_data.extend(cur_data)
         elif "hf_dataset" in path:
             cur_data = datasets.load_from_disk(path)["train"]
+            cur_data_list = [item for item in cur_data]
+            original_data.extend(cur_data_list)
+        else:
+            # assert the data from hf
+            cur_data = datasets.load_dataset(path)["train"]
             cur_data_list = [item for item in cur_data]
             original_data.extend(cur_data_list)
 

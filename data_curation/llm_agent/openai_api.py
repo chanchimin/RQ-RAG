@@ -5,10 +5,11 @@ from openai import OpenAI
 
 
 class OpenAIClient:
-    def __init__(self, config):
+    def __init__(self, config, model_version):
 
+        self.model_version = model_version
         self.client = OpenAI(**config)
-        self.model_version = config["model_version"]
+
 
 
     def chat_sync(self, messages, params={"temperature": 0, "max_tokens": 500}):

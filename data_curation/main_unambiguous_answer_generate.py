@@ -33,7 +33,7 @@ def call_DDGS(ins: dict, DDGS_agent: DDGSQueryRun, rewriter_agent=None, rewritte
 
     return retrieved_evidences, response
 
-def call_judge(ins: dict, original_query: str, retrieved_evidences: list, reference_output:str, judger_agent:ModelBestJudgerLMAgent):
+def call_judge(ins: dict, original_query: str, retrieved_evidences: list, reference_output:str, judger_agent:OpenAIJudgerLMAgent):
     """
     call the llm to give the reward on the query and retrieved results, (investigate the fine grained prompt later)
 
@@ -46,7 +46,7 @@ def call_judge(ins: dict, original_query: str, retrieved_evidences: list, refere
     return response
 
 
-def call_generator_short(ins: dict, prompt_template: str, generator_agent: ModelBestGeneratorLMAgent, **kwargs):
+def call_generator_short(ins: dict, prompt_template: str, generator_agent: OpenAIGeneratorLMAgent, **kwargs):
 
     """
 
@@ -66,7 +66,7 @@ def call_generator_short(ins: dict, prompt_template: str, generator_agent: Model
     return response
 
 
-def call_generator_long(ins: dict, prompt_template: str, generator_agent: ModelBestGeneratorLMAgent, **kwargs):
+def call_generator_long(ins: dict, prompt_template: str, generator_agent: OpenAIGeneratorLMAgent, **kwargs):
 
     """
 
@@ -120,14 +120,24 @@ def print_usage(agent_list:list):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--raw_data_path_ambiguous', type=str, nargs="+", default=None, help="for ambiguous dataset we assume the field is different from original ['instruction', 'input', 'output']")
-    parser.add_argument('--n_doc', type=int, default=3, help="the number of retrieved evidences")
+    parser.add_argument('--ndocs', type=int, default=3, help="the number of retrieved evidences")
     parser.add_argument('--output_path', type=str, default=None, help="the output path of our generated data")
     parser.add_argument('--n_samples', type=int, default=None,help="choose a fraction of number to create")
     parser.add_argument('--overwrite_output', default=False, action="store_true", help="decide whether to overwrite the outputdir")
-    parser.add_argument('--api_type', type=str, default="azure", help="choose in openai, azure")
+    parser.add_argument('--api_type', type=str, default="openai", help="choose in openai, azure")
+    parser.add_argument('--search_engine_type', type=str, default="duckduckgo")
+    parser.add_argument('--openai_api_key', type=str, default=None)
+    parser.add_argument('--openai_api_base', type=str, default=None)
+    parser.add_argument('--is_qa', default=False, action="store_true")
     args = parser.parse_args()
 
-    DDGS_agent = DDGSQueryRun(max_results=args.n_doc)
+    openai_config = {
+        "api_key": args.openai_api_key,
+        "base_url": args.openai_api_base,
+    }
+
+    if args.search_engine_type == "duckduckgo":
+        search_engine_api = DDGSQueryRun(max_results=args.ndocs)
 
     if args.api_type == "azure":
 
@@ -140,9 +150,9 @@ def main():
 
     elif args.api_type == "openai":
 
-        rewriter_agent = OpenAIRewriterLMAgent(api_type="openai", config=None)
-        judger_agent = OpenAIJudgerLMAgent(api_type="openai", config=None)
-        generator_agent = OpenAIGeneratorLMAgent(api_type="openai", config=None)
+        rewriter_agent = OpenAIRewriterLMAgent(api_type="openai", config=openai_config)
+        judger_agent = OpenAIJudgerLMAgent(api_type="openai", config=openai_config)
+        generator_agent = OpenAIGeneratorLMAgent(api_type="openai", config=openai_config)
 
     os.makedirs(os.path.dirname(args.output_path), exist_ok=True)
 
@@ -155,9 +165,14 @@ def main():
             cur_data = datasets.load_from_disk(path)["train"]
             cur_data_list = [item for item in cur_data]
             original_data.extend(cur_data_list)
+        else:
+            # assert the data from hf
+            cur_data = datasets.load_dataset(path)["train"]
+            cur_data_list = [item for item in cur_data]
+            original_data.extend(cur_data_list)
 
     start_index = 0
-    if os.path.exists(args.output_path):
+    if os.path.exists(args.output_path)and not args.overwrite_output:
 
         with open(args.output_path) as f:
             generated_data = json.load(f)
@@ -183,7 +198,7 @@ def main():
         # 2. then generate a refined answer if necessary
 
         for cur_unambiguous in ins["qa_pairs"]:
-            cur_evidences, cur_query = call_DDGS(cur_unambiguous, DDGS_agent=DDGS_agent, state=None)
+            cur_evidences, cur_query = call_DDGS(cur_unambiguous, DDGS_agent=search_engine_api, state=None)
 
             # add search results to every unambiguous questions
             cur_unambiguous["search_results"] = cur_evidences

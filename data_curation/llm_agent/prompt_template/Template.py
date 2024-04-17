@@ -20,9 +20,6 @@ with open(os.path.join(cur_dir, "UnambiguousGeneratorTemplateShort.txt")) as f:
 with open(os.path.join(cur_dir, "DecomposeGeneratorTemplate.txt")) as f:
     DecomposeGeneratorTemplate = "".join(f.readlines())
 
-with open(os.path.join(cur_dir, "DecomposeGeneratorTemplateForAns.txt")) as f:
-    DecomposeGeneratorTemplateForAns = "".join(f.readlines())
-
 with open(os.path.join(cur_dir, "MultiTurnGeneratorTemplate.txt")) as f:
     MultiTurnGeneratorTemplate = "".join(f.readlines())
 
@@ -32,8 +29,3 @@ with open(os.path.join(cur_dir, "MultiTurnGeneratorTemplateForAns.txt")) as f:
 with open(os.path.join(cur_dir, "QAGeneratorTemplate.txt")) as f:
     QAGeneratorTemplate = "".join(f.readlines())
 
-if __name__ == '__main__':
-
-    print(QueryRewriterTemplate)
-    print(QueryJudgerTemplate)
-    print(QueryGeneratorTemplate)

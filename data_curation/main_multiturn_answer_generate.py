@@ -37,7 +37,7 @@ def call_DDGS(ins: dict, DDGS_agent: DDGSQueryRun, rewriter_agent=None, rewritte
 
     return retrieved_evidences, response
 
-def call_judge(ins: dict, original_query: str, retrieved_evidences: list, reference_output:str, judger_agent:ModelBestJudgerLMAgent):
+def call_judge(ins: dict, original_query: str, retrieved_evidences: list, reference_output:str, judger_agent:OpenAIJudgerLMAgent):
     """
     call the llm to give the reward on the query and retrieved results, (investigate the fine grained prompt later)
 
@@ -129,7 +129,7 @@ def main():
 
     openai_config={
         "api_key": args.openai_api_key,
-        "base_url": args.openai_api_base
+        "base_url": args.openai_api_base,
     }
 
     if args.search_engine_type == "duckduckgo":
@@ -141,17 +141,17 @@ def main():
         azure_config = {
         }
 
-        rewriter_agent = OpenAIRewriterLMAgent(api_type="azure", config=azure_config)
-        judger_agent = OpenAIJudgerLMAgent(api_type="azure", config=azure_config)
-        generator_agent = OpenAIGeneratorLMAgent(api_type="azure", config=azure_config)
-        multiturn_agent = OpenAIMultiTurnLMAgent(api_type="azure", config=azure_config)
+        rewriter_agent = OpenAIRewriterLMAgent(api_type="azure", config=azure_config, model_version="gpt-3.5-turbo")
+        judger_agent = OpenAIJudgerLMAgent(api_type="azure", config=azure_config, model_version="gpt-3.5-turbo")
+        generator_agent = OpenAIGeneratorLMAgent(api_type="azure", config=azure_config, model_version="gpt-3.5-turbo")
+        multiturn_agent = OpenAIMultiTurnLMAgent(api_type="azure", config=azure_config, model_version="gpt-3.5-turbo")
 
     elif args.api_type == "openai":
 
-        rewriter_agent = OpenAIRewriterLMAgent(api_type="openai", config=openai_config)
-        judger_agent = OpenAIJudgerLMAgent(api_type="openai", config=openai_config)
-        generator_agent = OpenAIGeneratorLMAgent(api_type="openai", config=openai_config)
-        multiturn_agent = OpenAIMultiTurnLMAgent(api_type="openai", config=openai_config)
+        rewriter_agent = OpenAIRewriterLMAgent(api_type="openai", config=openai_config, model_version="gpt-3.5-turbo")
+        judger_agent = OpenAIJudgerLMAgent(api_type="openai", config=openai_config, model_version="gpt-3.5-turbo")
+        generator_agent = OpenAIGeneratorLMAgent(api_type="openai", config=openai_config, model_version="gpt-3.5-turbo")
+        multiturn_agent = OpenAIMultiTurnLMAgent(api_type="openai", config=openai_config, model_version="gpt-3.5-turbo")
 
 
     os.makedirs(os.path.dirname(args.output_path), exist_ok=True)
@@ -169,6 +169,11 @@ def main():
 
         elif "hf_dataset" in path:
             cur_data = datasets.load_from_disk(path)["train"]
+            cur_data_list = [item for item in cur_data]
+            original_data.extend(cur_data_list)
+        else:
+            # assert the data from hf
+            cur_data = datasets.load_dataset(path)["train"]
             cur_data_list = [item for item in cur_data]
             original_data.extend(cur_data_list)
 
@@ -241,8 +246,6 @@ def main():
 
         with open(args.output_path, "w") as w:
             json.dump(generated_data, w, indent=4)
-
-
 
     print("done")
 

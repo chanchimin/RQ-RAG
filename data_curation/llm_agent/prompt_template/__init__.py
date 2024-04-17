@@ -4,7 +4,6 @@ from .Template import QueryRewriterTemplate, \
     UnambiguousGeneratorTemplateLong, \
     UnambiguousGeneratorTemplateShort, \
     DecomposeGeneratorTemplate, \
-    DecomposeGeneratorTemplateForAns, \
     MultiTurnGeneratorTemplate, \
     MultiTurnGeneratorTemplateForAns, \
     QAGeneratorTemplate

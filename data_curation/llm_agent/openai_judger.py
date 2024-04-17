@@ -13,12 +13,12 @@ LOGGER = logging.getLogger("Root")
 
 
 class OpenAIJudgerLMAgent(LMAgent):
-    def __init__(self, api_type, config):
+    def __init__(self, api_type, config, model_version="gpt-3.5-turbo"):
         super().__init__(config)
         assert api_type in ["azure", "openai"]
 
         if api_type == "openai":
-            self.api = OpenAIClient(config)
+            self.api = OpenAIClient(config, model_version)
 
         self.usage_profiles = []
         self.max_try = 3
