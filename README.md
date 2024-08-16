@@ -30,7 +30,6 @@ We are also releasing the curated dataset, and the trained Llama2-7B checkpoint,
 
 ## Getting Start
 
----
 
 1. Installation
 
