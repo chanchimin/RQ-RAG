@@ -2,10 +2,31 @@
 
 This is the repo of our paper "RQ-RAG: Learning to Refine Queries for Retrieval Augmented Generation"
 
-**Code Refactoring in Progress**
+## Announcement
+We are excited to announce that our paper has been accepted to the Conference on Language Modeling (COLM) 2024. Thank you for your interest and support!
+
+If you find our paper useful, please consider cite our paper:
+
+```
+@article{chan2024rq,
+  title={Rq-rag: Learning to refine queries for retrieval augmented generation},
+  author={Chan, Chi-Min and Xu, Chunpu and Yuan, Ruibin and Luo, Hongyin and Xue, Wei and Guo, Yike and Fu, Jie},
+  journal={arXiv preprint arXiv:2404.00610},
+  year={2024}
+}
+
+```
 
 
-Please note that the code in this repository is currently undergoing refactoring as part of preparations for submission to a conference and is not fully tested yet.
+
+## Release
+
+We are also releasing the curated dataset, and the trained Llama2-7B checkpoint, you can download it here; [dataset](https://huggingface.co/datasets/zorowin123/rq_rag),
+ [checkpoint](https://huggingface.co/zorowin123/rq_rag_llama2_7B).
+
+
+
+
 
 ## Getting Start
 
